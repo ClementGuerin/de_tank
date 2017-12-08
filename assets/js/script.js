@@ -1,6 +1,6 @@
 function move(event) {
     var k = event.keyCode,
-        chrId = document.querySelector('.block'),
+        chrId = document.querySelector('#block1'),
         chr = {
             updown: function () {
                 var y = parseInt(getComputedStyle(chrId).top);
