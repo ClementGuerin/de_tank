@@ -3,6 +3,7 @@ body{
     padding: 0;
     font-family: sans-serif;
     background: #232323;
+    user-select: none;
 }
 
 .header{
@@ -17,23 +18,32 @@ body{
     color: #fff;
 }
 
-.map{
-    width: 1170px;
-    height: 460px;
-    border: solid 3px red;
-    background: url(../img/bg_sand.png) repeat;
-    position: absolute;
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto;
+.container{
+    max-width: 1140px;
+    margin: auto;
 }
 
-.block{
-    height: 20px;
-    width: 20px;
-    background: green;
-    position: absolute;
-    left: 50px;
-    top: 50px;
+.map{
+    text-align: center;
+    background: url(../img/bg_sand.png) repeat;
+    display: inline-block;
+    padding-top: 7px;
+    padding-bottom: 3px;
+}
+
+.line{
+    display: inline-block;
+}
+
+.col{
+    height: 50px;
+    width: 50px;
+    border: solid 0px #000;
+    display: inline-block;
+    
+}
+
+.line-3 > .col-12{
+    background: url(../img/tank_bg.png) no-repeat;
+    background-position: 0px 0px;
 }

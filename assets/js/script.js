@@ -34,42 +34,6 @@ function move(event) {
         x++;
         setPosition();
     }
-//        chr = {
-//            updown: function () {
-//                var y = parseInt(getComputedStyle(player).top);
-//                if (k == 'ArrowUp' || k == 'z') {
-//                    y -= 10;
-//                    if ( y == -10 ){
-//                        y += 10;
-//                    }
-//                } else if (k == 'ArrowDown' || k == 's') {
-//                    y += 10;
-//                    if ( y == 460 ){
-//                        y -= 10;
-//                    }
-//                }
-//                return y;
-//            },
-//
-//            leftright: function () {
-//                var x = parseInt(getComputedStyle(player).left);
-//                if (k == 'ArrowLeft' || k == 'q') {
-//                    x -= 10;
-//                    if ( x == -10 ){
-//                        x += 10;
-//                    }
-//                } else if (k == 'ArrowRight' || k == 'd') {
-//                    x += 10;
-//                    if ( x == 1160 ){
-//                        x -= 10;
-//                    }
-//                }
-//                return x;
-//            }
-//        };
-//
-//    player.style.top = (chr.updown()) + "px";
-//    player.style.left = (chr.leftright()) + "px";
 }
 
 document.addEventListener('keydown', move, false);
