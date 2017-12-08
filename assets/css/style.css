@@ -19,7 +19,7 @@ body{
 
 .map{
     width: 1170px;
-    height: 658px;
+    height: 460px;
     border: solid 3px red;
     background: url(../img/bg_sand.png) repeat;
     position: absolute;

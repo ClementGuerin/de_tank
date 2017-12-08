@@ -11,7 +11,7 @@ function move(event) {
                     }
                 } else if (k == 40) {
                     y += 10;
-                    if ( y == 650 ){
+                    if ( y == 460 ){
                         y -= 10;
                     }
                 }
