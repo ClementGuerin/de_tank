@@ -1,7 +1,6 @@
 function move(event) {
     var k = event.keyCode,
-        chrId = document.querySelector('.test'),
-        chrId = document.querySelector('.alderiate'),
+        chrId = document.querySelector('.block'),
         chr = {
             updown: function () {
                 var y = parseInt(getComputedStyle(chrId).top);
@@ -12,7 +11,7 @@ function move(event) {
                     }
                 } else if (k == 40) {
                     y += 10;
-                    if ( y == 410 ){
+                    if ( y == 650 ){
                         y -= 10;
                     }
                 }
@@ -28,7 +27,7 @@ function move(event) {
                     }
                 } else if (k == 39) {
                     x += 10;
-                    if ( x == 910 ){
+                    if ( x == 1160 ){
                         x -= 10;
                     }
                 }
