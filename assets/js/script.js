@@ -23,6 +23,7 @@ function checkKey(){
     if(keyPressed == tank1_key_up || keyPressed == tank1_key_down || keyPressed == tank1_key_left || keyPressed == tank1_key_right){
         tank1_checkDirection();
         tank1_changeDirection();
+        tank1_changePosition();
     }
     
     function tank1_checkDirection(){

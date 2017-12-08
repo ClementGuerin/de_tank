@@ -20,7 +20,7 @@ body{
 .map{
     width: 1170px;
     height: 460px;
-    border: solid 3px red;
+    border: solid 3px #000;
     background: url(../img/bg_sand.png) repeat;
     position: absolute;
     left: 0; 
@@ -45,6 +45,7 @@ body{
     position: absolute;
     left: 50px;
     top: 100px;
+    display: none;
 }
 
 .bullet{
