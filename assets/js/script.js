@@ -212,9 +212,8 @@ var ntm = setInterval(function(){
     var ciblex = x2,
         cibley = y2,
         emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
-    emplacement.classList.add('cible');
-    cibleValue = cibleValue + 1;
-<<<<<<< HEAD
+        emplacement.classList.add('cible');
+        cibleValue = cibleValue + 1;
    if (cibleValue>=4){
         // game over
         console.log("TAS PERDU");
