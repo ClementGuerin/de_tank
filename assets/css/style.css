@@ -66,6 +66,8 @@ body{
     padding-top: 150px;
     background: rgba(155, 0, 0, 0.85);
     box-shadow: inset 0px 0px 60px 0px rgba(0,0,0,0.75);
+    display: none;
+    z-index: 4;
 
 }
 
