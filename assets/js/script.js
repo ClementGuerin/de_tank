@@ -5,6 +5,8 @@ var maxY = document.querySelectorAll('.line').length;
 
 var x = 1;
 var y = 5;
+var cibleValue = 0;
+var score = 0;
 
 var controls = {
     up: 'z',
@@ -31,14 +33,18 @@ function setPosition (posX, posY, dir) {
     gridX = x;
     gridY = y;
     
+    var grid = document.querySelector('.line-'+posY+' .col-'+posX);
+    
+    if(grid.classList.contains('cible')){
+        return;
+    }
+    
     var grids = document.querySelectorAll('.col');
     
     grids.forEach(function(e){
         e.style.background = '';
         e.style.backgroundPosition = '';
     });
-    
-    var grid = document.querySelector('.line-'+posY+' .col-'+posX);
     
     direction = dir;
     
@@ -117,6 +123,22 @@ setInterval(function(){
     var newY = bulletY;
     var newX = bulletX;
     
+    var bulletDestination = document.querySelector('.line-'+newY+' .col-'+newX);
+    
+    if(bulletDestination.classList.contains('cible')){
+        bulletDestination.classList.remove('cible');
+        cibleValue = cibleValue - 1;
+        score = score + 100 ;
+        console.log(score);
+        bulletDestination.classList.add('cible-touchee');
+        bulletX = 0;
+        bulletY = 0;
+        setTimeout(function(){
+            bulletDestination.classList.remove('cible-touchee');
+        }, 1000);
+        return;
+    }
+    
     switch(bulletDir){
         case rotation.up:
             newY--;
@@ -150,6 +172,9 @@ setInterval(function(){
     
     if(bulletDestination.classList.contains('cible')){
         bulletDestination.classList.remove('cible');
+        cibleValue = cibleValue - 1;
+        score = score + 100 ;
+        console.log(score);
         bulletDestination.classList.add('cible-touchee');
         bulletX = 0;
         bulletY = 0;
@@ -171,7 +196,7 @@ setInterval(function(){
 document.addEventListener('keydown', move, false);
 >>>>>>> Stashed changes
 
-setInterval(function(){ 
+var ntm = setInterval(function(){ 
     x2 = Math.floor(Math.random() * 11);
     if (x2 == x){
         x2 = x+1;
@@ -180,12 +205,23 @@ setInterval(function(){
     if (y2 == y){
         y2 = y+1;
     }
+    
+    if(ciblex < maxX && cibley < maxY){
+        console.log(ciblex+' pour '+maxX);
+        emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
+        emplacement.classList.add('cible');
+    }
+    
     var ciblex = x2,
         cibley = y2,
         emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
     emplacement.classList.add('cible');
-<<<<<<< Updated upstream
-}, 3000);
+    cibleValue = cibleValue + 1;
+   if (cibleValue>=3){
+        alert("TAS PERDU");
+        clearInterval(ntm);
+    }
+}, 1000);
 
 document.addEventListener('keydown', move, false);
 setPosition(x, y, direction);
