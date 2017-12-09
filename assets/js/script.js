@@ -27,9 +27,18 @@ var bulletX = 0;
 var bulletY = 0;
 var bulletDir = direction;
 
+var cibleValue = 0;
+
 function setPosition (posX, posY, dir) {
     gridX = x;
     gridY = y;
+    
+    
+    var grid = document.querySelector('.line-'+posY+' .col-'+posX);
+    
+    if(grid.classList.contains('cible')){
+        return;
+    }
     
     var grids = document.querySelectorAll('.col');
     
@@ -37,8 +46,6 @@ function setPosition (posX, posY, dir) {
         e.style.background = '';
         e.style.backgroundPosition = '';
     });
-    
-    var grid = document.querySelector('.line-'+posY+' .col-'+posX);
     
     direction = dir;
     
@@ -148,6 +155,7 @@ setInterval(function(){
     var bulletDestination = document.querySelector('.line-'+newY+' .col-'+newX);
     
     if(bulletDestination.classList.contains('cible')){
+        cibleValue -= 1;
         bulletDestination.classList.remove('cible');
         bulletDestination.classList.add('cible-touchee');
         bulletX = 0;
@@ -168,18 +176,29 @@ setInterval(function(){
 }, 32.12);
 
 setInterval(function(){ 
-    x2 = Math.floor(Math.random() * 11);
+    x2 = Math.floor(Math.random() * 10) + 1;
     if (x2 == x){
         x2 = x+1;
     }
-    y2 = Math.floor(Math.random() * 21);
+    y2 = Math.floor(Math.random() * 20) + 1;
     if (y2 == y){
         y2 = y+1;
     }
     var ciblex = x2,
-        cibley = y2,
+        cibley = y2
+    
+    if(ciblex < maxX && cibley < maxY){
+        console.log(ciblex+' pour '+maxX);
         emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
-    emplacement.classList.add('cible');
+        emplacement.classList.add('cible');
+    }
+    
+    cibleValue = cibleValue + 1;
+    
+    if (cibleValue>=3){
+        console.log("TAS PERDU");
+        // TODO
+    }
 }, 3000);
 
 document.addEventListener('keydown', move, false);
