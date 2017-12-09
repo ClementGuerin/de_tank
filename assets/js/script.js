@@ -5,6 +5,8 @@ var maxY = document.querySelectorAll('.line').length;
 
 var x = 1;
 var y = 5;
+var cibleValue = 0;
+var score = 0;
 
 var controls = {
     up: 'z',
@@ -25,8 +27,6 @@ var direction = rotation.right;
 var bulletX = 0;
 var bulletY = 0;
 var bulletDir = direction;
-
-var cibleValue = 0;
 
 function setPosition (posX, posY, dir) {
     gridX = x;
@@ -121,6 +121,22 @@ setInterval(function(){
     var newY = bulletY;
     var newX = bulletX;
     
+    var bulletDestination = document.querySelector('.line-'+newY+' .col-'+newX);
+    
+    if(bulletDestination.classList.contains('cible')){
+        bulletDestination.classList.remove('cible');
+        cibleValue = cibleValue - 1;
+        score = score + 100 ;
+        console.log(score);
+        bulletDestination.classList.add('cible-touchee');
+        bulletX = 0;
+        bulletY = 0;
+        setTimeout(function(){
+            bulletDestination.classList.remove('cible-touchee');
+        }, 1000);
+        return;
+    }
+    
     switch(bulletDir){
         case rotation.up:
             newY--;
@@ -153,8 +169,10 @@ setInterval(function(){
     var bulletDestination = document.querySelector('.line-'+newY+' .col-'+newX);
     
     if(bulletDestination.classList.contains('cible')){
-        cibleValue -= 1;
         bulletDestination.classList.remove('cible');
+        cibleValue = cibleValue - 1;
+        score = score + 100 ;
+        console.log(score);
         bulletDestination.classList.add('cible-touchee');
         bulletX = 0;
         bulletY = 0;
@@ -173,17 +191,15 @@ setInterval(function(){
     grid.style.backgroundPosition = bulletDir;
 }, 32.12);
 
-setInterval(function(){ 
-    x2 = Math.floor(Math.random() * 10) + 1;
+var ntm = setInterval(function(){ 
+    x2 = Math.floor(Math.random() * 11);
     if (x2 == x){
         x2 = x+1;
     }
-    y2 = Math.floor(Math.random() * 20) + 1;
+    y2 = Math.floor(Math.random() * 21);
     if (y2 == y){
         y2 = y+1;
     }
-    var ciblex = x2,
-        cibley = y2
     
     if(ciblex < maxX && cibley < maxY){
         console.log(ciblex+' pour '+maxX);
@@ -191,13 +207,16 @@ setInterval(function(){
         emplacement.classList.add('cible');
     }
     
+    var ciblex = x2,
+        cibley = y2,
+        emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
+    emplacement.classList.add('cible');
     cibleValue = cibleValue + 1;
-    
-    if (cibleValue>=3){
-        console.log("TAS PERDU");
-        // TODO
+   if (cibleValue>=3){
+        alert("TAS PERDU");
+        clearInterval(ntm);
     }
-}, 3000);
+}, 1000);
 
 document.addEventListener('keydown', move, false);
 setPosition(x, y, direction);
