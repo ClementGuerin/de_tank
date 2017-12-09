@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'FIANSO';
+    src: url('../fonts/prstartk.ttf');
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -21,6 +26,98 @@ body{
 .container{
     max-width: 1140px;
     margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.score{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.score h3{
+    font-family: 'FIANSO';
+    font-size: 32px;
+    color: #000;
+    margin: inherit;
+    padding-bottom: 8px;
+}
+
+.score h5{
+    font-family: 'FIANSO';
+    font-size: 24px;
+    color: #000;
+    margin: inherit;
+}
+
+.gameover{
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 73%;
+    top: 0;
+    padding-top: 150px;
+    background: rgba(155, 0, 0, 0.85);
+    box-shadow: inset 0px 0px 60px 0px rgba(0,0,0,0.75);
+
+}
+
+.gameover h1{
+    font-family: 'FIANSO';
+    font-size: 64px;
+    color: #fff;
+    margin: inherit;
+    padding-bottom: 60px;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.15);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.gameover h4{
+    font-family: 'FIANSO';
+    font-size: 18px;
+    color: #fff;
+    margin: inherit;
+    padding-bottom: 100px;
+    opacity: 0.8;
+}
+
+.gameover a{
+    font-family: 'FIANSO';
+    font-size: 18px;
+    color: #fff;
+    margin: inherit;
+    text-align: center;
+    border: solid 3px #fff;
+    border-radius: 6px;
+    padding: 12px 24px;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+    z-index: 5;
+    
+}
+
+.gameover a:hover{
+    background: #fff;
+    color: #000;
 }
 
 .map{
@@ -29,6 +126,7 @@ body{
     display: inline-block;
     padding-top: 7px;
     padding-bottom: 3px;
+    overflow: hidden;
 }
 
 .line{
@@ -51,6 +149,18 @@ body{
     animation: cibleBroken 0.3s 3;
 }
 
+<<<<<<< Updated upstream
+=======
+.cible{
+    background: url(../img/bg_cible.png) no-repeat;
+}
+
+.cible-touchee{
+    background: url(../img/bg_cible_broken.png) no-repeat;
+    animation: cibleBroken 0.3s 3;
+}
+
+>>>>>>> Stashed changes
 @keyframes cibleBroken{
     0%{
         opacity: 1;

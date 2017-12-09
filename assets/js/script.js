@@ -112,6 +112,7 @@ function move(event) {
     }
 }
 
+<<<<<<< Updated upstream
 setInterval(function(){
     console.log('test');
     if(bulletX == 0 || bulletY == 0){
@@ -192,6 +193,9 @@ setInterval(function(){
     grid.style.background = 'url(./assets/img/bg_bullet.png) no-repeat';
     grid.style.backgroundPosition = bulletDir;
 }, 32.12);
+=======
+document.addEventListener('keydown', move, false);
+>>>>>>> Stashed changes
 
 var ntm = setInterval(function(){ 
     x2 = Math.floor(Math.random() * 11);
@@ -223,3 +227,8 @@ var ntm = setInterval(function(){
 
 document.addEventListener('keydown', move, false);
 setPosition(x, y, direction);
+=======
+
+
+}, 3000);
+>>>>>>> Stashed changes
