@@ -6,6 +6,8 @@
 </head>
 
 <body>
+    <div class="nano-player" style="display: none"></div>
+   
     <section class="header">
         <h1>de_tank</h1>
     </section>
@@ -23,9 +25,9 @@
             <div class="startmenu">
                 <h1>DE_TANK</h1>
                 <h4>Vous devez détruire les cibles,<br><br> si plus de 3 cibles sont affichées c'est PERDU.</h4>
-                <a href="#" class="play">Facile</a>
+                <a href="#" class="play easy">Facile</a>
                 <br><br>
-                <a href="#" class="play">Pas facile</a>
+                <a href="#" class="play hard">Pas facile</a>
                 <img src="assets/img/tank.png" alt="tank">
             </div>
             <div class="line line-1">
@@ -252,7 +254,23 @@
     </div>
     <div class="background"></div>
     
+    <script src="./assets/js/nano.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        var nanoPlayer = new nanoPlayer('.nano-player', {
+            // Parameters
+            autoplay: true,
+            loop: true,
+            defaultVolume: 100,
+            songList: [
+                {
+                    name: 'musique',
+                    path: 'song.mp3'
+                }
+            ],
+            DefaultSong: 0
+        })
+    </script>
 </body>
-<script src="assets/js/script.js"></script>
-
 </html>
