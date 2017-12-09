@@ -274,6 +274,7 @@ var volume = document.querySelector('.volume');
 
 var audio_musique = new Audio();
 audio_musique.src = 'assets/sounds/song.mp3';
+audio_tir.volume = 0.15;
 
 var audio_tir = new Audio();
 audio_tir.src = 'assets/sounds/laser.wav';
