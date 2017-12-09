@@ -133,6 +133,8 @@ setInterval(function(){
         bulletY = 0;
         setTimeout(function(){
             bulletDestination.classList.remove('cible-touchee');
+            bulletDestination.style.background = '';
+            bulletDestination.style.backgroundPosition = '';
         }, 1000);
         return;
     }
@@ -212,8 +214,9 @@ var ntm = setInterval(function(){
         emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
     emplacement.classList.add('cible');
     cibleValue = cibleValue + 1;
-   if (cibleValue>=3){
-        alert("TAS PERDU");
+   if (cibleValue>=4){
+        // game over
+        console.log("TAS PERDU");
         clearInterval(ntm);
     }
 }, 1000);
