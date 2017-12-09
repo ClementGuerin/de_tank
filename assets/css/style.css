@@ -151,8 +151,6 @@ body{
     animation: cibleBroken 0.3s 3;
 }
 
-<<<<<<< Updated upstream
-=======
 .cible{
     background: url(../img/bg_cible.png) no-repeat;
 }
@@ -162,7 +160,6 @@ body{
     animation: cibleBroken 0.3s 3;
 }
 
->>>>>>> Stashed changes
 @keyframes cibleBroken{
     0%{
         opacity: 1;

@@ -3,10 +3,16 @@ var player = document.querySelector('#player');
 var maxX = document.querySelectorAll('.line-1 .col').length;
 var maxY = document.querySelectorAll('.line').length;
 
+var score = document.querySelectorAll('.textScore');
+
+score.forEach(function(e){
+    e.textContent = 0;
+});
+
 var x = 1;
 var y = 5;
 var cibleValue = 0;
-var score = 0;
+var playing = true;
 
 var controls = {
     up: 'z',
@@ -27,6 +33,12 @@ var direction = rotation.right;
 var bulletX = 0;
 var bulletY = 0;
 var bulletDir = direction;
+
+function set_score (){
+    score.forEach(function(e){
+    e.textContent = 0;
+});
+}
 
 function setPosition (posX, posY, dir) {
     gridX = x;
@@ -93,22 +105,26 @@ function tirer () {
 
 function move(event) {
     var k = event.key;
-
-    if(k == controls.up && y > 1){
-        var newY = y-1;
-        setPosition(x, newY, rotation.up);
-    } else if (k == controls.down && y < maxY){
-        var newY = y+1;
-        setPosition(x, newY, rotation.down);
-    } else if (k == controls.left && x > 1){
-        var newX = x-1;
-        setPosition(newX, y, rotation.left);
-    } else if (k == controls.right && x < maxX){
-        var newX = x+1;
-        setPosition(newX, y, rotation.right);
-    } else if (event.keyCode == 32){
-        event.preventDefault();
-        tirer();
+    
+    if(playing == true){
+        if(k == controls.up && y > 1){
+            var newY = y-1;
+            setPosition(x, newY, rotation.up);
+        } else if (k == controls.down && y < maxY){
+            var newY = y+1;
+            setPosition(x, newY, rotation.down);
+        } else if (k == controls.left && x > 1){
+            var newX = x-1;
+            setPosition(newX, y, rotation.left);
+        } else if (k == controls.right && x < maxX){
+            var newX = x+1;
+            setPosition(newX, y, rotation.right);
+        } else if (event.keyCode == 32){
+            event.preventDefault();
+            tirer();
+        }
+    }else{
+        return;
     }
 }
 
@@ -126,8 +142,9 @@ setInterval(function(){
     if(bulletDestination.classList.contains('cible')){
         bulletDestination.classList.remove('cible');
         cibleValue = cibleValue - 1;
-        score = score + 100 ;
-        console.log(score);
+        score.forEach(function(e){
+            e.textContent = Number(e.textContent)+100;
+        });
         bulletDestination.classList.add('cible-touchee');
         bulletX = 0;
         bulletY = 0;
@@ -173,8 +190,9 @@ setInterval(function(){
     if(bulletDestination.classList.contains('cible')){
         bulletDestination.classList.remove('cible');
         cibleValue = cibleValue - 1;
-        score = score + 100 ;
-        console.log(score);
+        score.forEach(function(e){
+            e.textContent = Number(e.textContent)+100;
+        });
         bulletDestination.classList.add('cible-touchee');
         bulletX = 0;
         bulletY = 0;
@@ -194,11 +212,11 @@ setInterval(function(){
 }, 32.12);
 
 var ntm = setInterval(function(){ 
-    x2 = Math.floor(Math.random() * 11);
+    x2 = Math.floor(Math.random() * 10) + 1;
     if (x2 == x){
         x2 = x+1;
     }
-    y2 = Math.floor(Math.random() * 21);
+    y2 = Math.floor(Math.random() * 20) + 1;
     if (y2 == y){
         y2 = y+1;
     }
@@ -215,11 +233,18 @@ var ntm = setInterval(function(){
         emplacement.classList.add('cible');
         cibleValue = cibleValue + 1;
    if (cibleValue>=4){
-        // game over
-        console.log("TAS PERDU");
+        var gameover = document.querySelector('.gameover');
+        gameover.style.display = 'block';
+        playing = false;
         clearInterval(ntm);
     }
-}, 1000);
+}, 1600);
 
 document.addEventListener('keydown', move, false);
 setPosition(x, y, direction);
+
+var replay = document.querySelector('.replay');
+
+replay.addEventListener('onclick', function(){
+    alert('test');
+});
