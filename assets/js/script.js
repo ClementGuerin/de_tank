@@ -140,6 +140,7 @@ function run (difficulty) {
             } else if (event.keyCode == 32){
                 event.preventDefault();
                 tirer();
+                audio_tir.play();
             }
         }else{
             return;
@@ -147,7 +148,6 @@ function run (difficulty) {
     }
 
     setInterval(function(){
-        console.log('test');
         if(bulletX == 0 || bulletY == 0){
             return;
         }
@@ -212,6 +212,7 @@ function run (difficulty) {
                 e.textContent = Number(e.textContent)+100;
             });
             bulletDestination.classList.add('cible-touchee');
+            audio_touche.play();
             bulletX = 0;
             bulletY = 0;
             setTimeout(function(){
@@ -254,7 +255,9 @@ function run (difficulty) {
             gameover.style.display = 'block';
             playing = false;
             clearInterval(ntm);
-            nanoPlayer.pause();
+            audio_musique.pause();
+            audio_musique.currentTime = 0.0;
+            audio_gameover.play();
         }
     }, difficulty);
 
@@ -267,21 +270,36 @@ var startmenu = document.querySelector('.startmenu');
 var easy = document.querySelector('.play.easy');
 var hard = document.querySelector('.play.hard');
 var mute = document.querySelector('#mute');
+var volume = document.querySelector('.volume');
+
+var audio_musique = new Audio();
+audio_musique.src = 'assets/sounds/song.mp3';
+
+var audio_tir = new Audio();
+audio_tir.src = 'assets/sounds/laser.wav';
+
+var audio_gameover = new Audio();
+audio_gameover.src = 'assets/sounds/gameover.wav';
+
+var audio_touche = new Audio();
+audio_touche.src = 'assets/sounds/touche.wav';
 
 replay.addEventListener('click', function(){
-    run('easy');
+    startmenu.style.display = 'block';
 });
 
 easy.addEventListener('click', function(){
     run('easy');
     startmenu.style.display = 'none';
-    nanoPlayer.play();
+    audio_musique.play();
+    volume.style.display = 'block';
 });
 
 hard.addEventListener('click', function(){
     run('hard');
     startmenu.style.display = 'none';
-    nanoPlayer.play();
+    audio_musique.play();
+    volume.style.display = 'block';
 });
 
 mute.addEventListener('click', function(e){
@@ -289,9 +307,26 @@ mute.addEventListener('click', function(e){
     
     if(mute.classList.contains('mute-off')){
         mute.classList.remove('mute-off');
-        nanoPlayer.play();
+        volume.style.display = 'block';
+        audio_musique.play();
+        audio_tir.volume = 0.5;
+        audio_gameover.volume = 0.5;
+        audio_touche.volume = 0.5;
     }else{
         mute.classList.add('mute-off');
-        nanoPlayer.pause();
+        audio_musique.pause();
+        volume.style.display = 'none';
+        audio_tir.volume = 0;
+        audio_gameover.volume = 0;
+        audio_touche.volume = 0;
     }
 });
+
+function SetVolume(val)
+{
+    audio_musique.volume = val / 100;
+    audio_tir.volume = val / 100;
+    audio_gameover.volume = val / 100;
+    audio_touche.volume = val / 100;
+    
+}

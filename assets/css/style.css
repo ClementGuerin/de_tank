@@ -76,8 +76,8 @@ body{
     text-align: center;
     position: absolute;
     width: 100%;
-    height: 73%;
-    top: 0;
+    height: 72.7%;
+    top: 0px;
     padding-top: 150px;
     background: rgba(155, 0, 0, 0.85);
     box-shadow: inset 0px 0px 60px 0px rgba(0,0,0,0.75);
@@ -144,6 +144,8 @@ body{
     padding-top: 7px;
     padding-bottom: 3px;
     overflow: hidden;
+    width: 1140px;
+    height: 540px;
 }
 
 .line{
@@ -195,11 +197,11 @@ body{
 
 .startmenu{
     text-align: center;
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 73%;
-    top: 0;
-    padding-top: 150px;
+    height: 100%;
+    top: -7px;
+    padding-top: 60px;
     background: rgba(0, 0, 0, 1);
     box-shadow: inset 0px 0px 60px 0px rgba(0,0,0,0.75);
     z-index: 10;
@@ -212,7 +214,7 @@ body{
     font-size: 64px;
     color: #fff;
     margin: inherit;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
     animation: pulse 3s infinite;
 }
 
@@ -260,7 +262,7 @@ body{
     color: #000;
 }
 
-.startmenu img{
+.startmenu .tank{
     width: 50%;
     position: absolute;
     left: -45px;
@@ -268,6 +270,11 @@ body{
     z-index: -1;
     filter: blur(3px);
     animation: tankPulse 3s infinite;
+}
+
+.startmenu .tuto{
+    max-width: 30%;
+    margin-bottom: 15px;
 }
 
 @keyframes tankPulse{
@@ -290,8 +297,169 @@ body{
     position: absolute;
     left: 15;
     bottom: 15px;
+    cursor: pointer;
 }
 
 .mute-off{
     background-position: 0px -64px;
+}
+
+.copyright{
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.copyright ul{
+    margin: inherit;
+    padding: inherit;
+    padding-top: 10px;
+    margin-top: 0px;
+}
+
+.copyright ul li{
+    display: inline;
+}
+
+.copyright ul > li > a{
+    color: #fff;
+    font-size: 12px;
+    transition: 0.15s;
+}
+
+.copyright ul > li > a:hover{
+    color: green;
+}
+
+.volume{
+    position: absolute;
+    left: 100px;
+    bottom: 30px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+    opacity: 0.7;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #e7e7e7;
+    border-radius: 0px;
+    border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 1px #000000;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: #FFFFFF;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #e7e7e7;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #e7e7e7;
+    border-radius: 0px;
+    border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 1px #000000;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #e7e7e7;
+    border: 0px solid #000000;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+    background: #e7e7e7;
+    border: 0px solid #000000;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 1px #000000;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #e7e7e7;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #e7e7e7;
+}
+
+
+
+
+@media (max-width: 1440px){
+    .map{
+        transform: scale(0.8);
+    }
+    .startmenu{
+        height: 490px;
+    }
+    .startmenu .tuto{
+        max-width: 40%;
+        margin-bottom: 15px;
+    }
+    .startmenu h1{
+        font-size: 38px;
+        padding-bottom: 30px;
+    }
+    .copyright{
+        color: #fff;
+        width: 100%;
+        position: absolute;
+        margin-top: 0px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (max-width: 1280px){
+    .header h1{
+        display: none;
+    }
 }

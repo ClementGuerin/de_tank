@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>de_tank</title>
@@ -6,31 +7,33 @@
 </head>
 
 <body>
-    <div class="nano-player" style="display: none"></div>
-   
     <section class="header">
         <h1>de_tank</h1>
     </section>
     <div class="container">
         <section class="map">
-           <div class="score">
-               <h3>SCORE</h3>
-               <h5><span class="textScore"></span></h5>
-           </div>
-           <div class="gameover">
-               <h1>GAME OVER</h1>
-               <h4>Votre score : <span class="textScore"></span></h4>
-               <a href="#" class="replay">Rejouer</a>
-           </div>
+            <div class="score">
+                <h3>SCORE</h3>
+                <h5><span class="textScore"></span></h5>
+            </div>
+            <div class="gameover">
+                <h1>GAME OVER</h1>
+                <h4>Votre score : <span class="textScore"></span></h4>
+                <a href="#" class="replay">Rejouer</a>
+            </div>
             <div class="startmenu">
                 <h1>DE_TANK</h1>
+                <img class="tuto" src="assets/img/keyboard-de_tank.png" alt="tuto">
                 <h4>Vous devez détruire les cibles,<br><br> si plus de 3 cibles sont affichées c'est PERDU.</h4>
                 <a href="#" class="play easy">Facile</a>
                 <br><br>
                 <a href="#" class="play hard">Pas facile</a>
-                <img src="assets/img/tank.png" alt="tank">
+                <img class="tank" src="assets/img/tank.png" alt="tank">
             </div>
             <div id="mute" class="mute"></div>
+            <div class="volume">
+                <input type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)"></input>
+            </div>
             <div class="line line-1">
                 <div class="col col-1"></div>
                 <div class="col col-2"></div>
@@ -252,26 +255,19 @@
                 <div class="col col-20"></div>
             </div>
         </section>
+    <div class="copyright">
+        Jeu réalisé en 12 heures pendant une nuit charette
+        <br>
+        <ul>
+            <li><a href="https://twitter.com/Orphevs" target="_blank" >@Orphevs</a></li>
+            <li><a href="https://twitter.com/NyroxCdejaPris" target="_blank">@NyroxCdejaPris</a></li>
+            <li><a href="https://twitter.com/SundownDEV" target="_blank">@SundownDEV</a></li>
+            <li><a href="https://twitter.com/idealistick8" target="_blank">@idealistick</a></li>
+        </ul>
+    </div>
     </div>
     <div class="background"></div>
-    
-    <script src="./assets/js/nano.js"></script>
     <script src="assets/js/script.js"></script>
-    
-    <script>
-        var nanoPlayer = new nanoPlayer('.nano-player', {
-            // Parameters
-            autoplay: false,
-            loop: true,
-            defaultVolume: 100,
-            songList: [
-                {
-                    name: 'musique',
-                    path: 'song.mp3'
-                }
-            ],
-            DefaultSong: 0
-        })
-    </script>
 </body>
+
 </html>
