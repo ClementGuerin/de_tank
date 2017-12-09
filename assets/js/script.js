@@ -49,7 +49,7 @@ function run (difficulty) {
     if(difficulty == 'easy'){
         difficulty = 2000;
     }else if(difficulty == 'hard'){
-        difficulty = 1400;
+        difficulty = 1100;
     }
 
     function set_score (){
