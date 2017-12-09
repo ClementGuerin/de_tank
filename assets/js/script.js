@@ -254,6 +254,7 @@ function run (difficulty) {
             gameover.style.display = 'block';
             playing = false;
             clearInterval(ntm);
+            nanoPlayer.pause();
         }
     }, difficulty);
 
@@ -262,9 +263,10 @@ function run (difficulty) {
 }
 
 var replay = document.querySelector('.replay');
+var startmenu = document.querySelector('.startmenu');
 var easy = document.querySelector('.play.easy');
 var hard = document.querySelector('.play.hard');
-var startmenu = document.querySelector('.startmenu');
+var mute = document.querySelector('#mute');
 
 replay.addEventListener('click', function(){
     run('easy');
@@ -273,9 +275,23 @@ replay.addEventListener('click', function(){
 easy.addEventListener('click', function(){
     run('easy');
     startmenu.style.display = 'none';
+    nanoPlayer.play();
 });
 
 hard.addEventListener('click', function(){
     run('hard');
     startmenu.style.display = 'none';
+    nanoPlayer.play();
+});
+
+mute.addEventListener('click', function(e){
+    var mute = document.querySelector('#mute');
+    
+    if(mute.classList.contains('mute-off')){
+        mute.classList.remove('mute-off');
+        nanoPlayer.play();
+    }else{
+        mute.classList.add('mute-off');
+        nanoPlayer.pause();
+    }
 });
