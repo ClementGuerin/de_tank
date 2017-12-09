@@ -41,3 +41,30 @@ body{
     border: solid 0px #000;
     display: inline-block;
 }
+
+.cible{
+    background: url(../img/bg_cible.png) no-repeat;
+}
+
+.cible-touchee{
+    background: url(../img/bg_cible_broken.png) no-repeat;
+    animation: cibleBroken 0.3s 3;
+}
+
+@keyframes cibleBroken{
+    0%{
+        opacity: 1;
+    }
+    49%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    99%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

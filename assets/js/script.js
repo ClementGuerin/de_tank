@@ -6,24 +6,28 @@ var maxY = document.querySelectorAll('.line').length;
 var x = 1;
 var y = 5;
 
-
 var controls = {
     up: 'z',
     down: 's',
     left: 'q',
-    right: 'd'
+    right: 'd',
+    space: 'spacebar'
 }
 
 var rotation = {
     up: '0px -50px',
     down: '-50px -50px',
     left: '-50px 0px',
-    right: '0px 0px',
+    right: '0px 0px'
 }
 
 var direction = rotation.right;
 
-function setPosition (posX, posY, direction) {
+var bulletX = 0;
+var bulletY = 0;
+var bulletDir = direction;
+
+function setPosition (posX, posY, dir) {
     gridX = x;
     gridY = y;
     
@@ -36,17 +40,50 @@ function setPosition (posX, posY, direction) {
     
     var grid = document.querySelector('.line-'+posY+' .col-'+posX);
     
+    direction = dir;
+    
     grid.style.background = 'url(./assets/img/tank_bg.png) no-repeat';
     grid.style.backgroundPosition = direction;
     
     x = posX;
     y = posY;
-    
-    console.log(posX+' pour '+maxX);
 }
 
 function getPosition () {
     return [x, y];
+}
+
+function tirer () {
+    var posX = x;
+    var posY = y;
+    
+    switch(direction){
+        case rotation.up:
+            posY--;
+            break
+        case rotation.down:
+            posY++;
+            break
+        case rotation.left:
+            posX--;
+            break
+        case rotation.right:
+            posX++;
+            break
+    }
+    
+    if(posX < 1 || posX > maxX || posY < 1 || posY > maxY){
+        return;
+    }
+    
+    bulletX = posX;
+    bulletY = posY;
+    bulletDir = direction;
+    
+    var grid = document.querySelector('.line-'+posY+' .col-'+posX);
+    
+    grid.style.background = 'url(./assets/img/bg_bullet.png) no-repeat';
+    grid.style.backgroundPosition = bulletDir;
 }
 
 function move(event) {
@@ -55,17 +92,95 @@ function move(event) {
     if(k == controls.up && y > 1){
         var newY = y-1;
         setPosition(x, newY, rotation.up);
-    } else if(k == controls.down && y < maxY){
+    } else if (k == controls.down && y < maxY){
         var newY = y+1;
         setPosition(x, newY, rotation.down);
-    } else if(k == controls.left && x > 1){
+    } else if (k == controls.left && x > 1){
         var newX = x-1;
         setPosition(newX, y, rotation.left);
-    } else if(k == controls.right && x < maxX){
+    } else if (k == controls.right && x < maxX){
         var newX = x+1;
         setPosition(newX, y, rotation.right);
+    } else if (event.keyCode == 32){
+        event.preventDefault();
+        tirer();
     }
 }
+
+setInterval(function(){
+    console.log('test');
+    if(bulletX == 0 || bulletY == 0){
+        return;
+    }
+    
+    var newY = bulletY;
+    var newX = bulletX;
+    
+    switch(bulletDir){
+        case rotation.up:
+            newY--;
+            break;
+        case rotation.down:
+            newY++;
+            break;
+        case rotation.left:
+            newX--;
+            break;
+        case rotation.right:
+            newX++;
+            break;
+    }
+    
+    
+    if(newY < 1 || newY > maxY || newX < 1 || newX > maxX){
+        var grid = document.querySelector('.line-'+bulletY+' .col-'+bulletX);
+        
+        grid.style.background = '';
+        grid.style.backgroundPosition = '';
+        return;
+    }
+    
+    var grid = document.querySelector('.line-'+bulletY+' .col-'+bulletX);
+        
+    grid.style.background = '';
+    grid.style.backgroundPosition = '';
+    
+    var bulletDestination = document.querySelector('.line-'+newY+' .col-'+newX);
+    
+    if(bulletDestination.classList.contains('cible')){
+        bulletDestination.classList.remove('cible');
+        bulletDestination.classList.add('cible-touchee');
+        bulletX = 0;
+        bulletY = 0;
+        setTimeout(function(){
+            bulletDestination.classList.remove('cible-touchee');
+        }, 1000);
+        return;
+    }
+    
+    bulletX = newX;
+    bulletY = newY;
+    
+    var grid = document.querySelector('.line-'+bulletY+' .col-'+bulletX);
+        
+    grid.style.background = 'url(./assets/img/bg_bullet.png) no-repeat';
+    grid.style.backgroundPosition = bulletDir;
+}, 32.12);
+
+setInterval(function(){ 
+    x2 = Math.floor(Math.random() * 11);
+    if (x2 == x){
+        x2 = x+1;
+    }
+    y2 = Math.floor(Math.random() * 21);
+    if (y2 == y){
+        y2 = y+1;
+    }
+    var ciblex = x2,
+        cibley = y2,
+        emplacement = document.querySelector(".line-"+ciblex+" .col-"+cibley);
+    emplacement.classList.add('cible');
+}, 3000);
 
 document.addEventListener('keydown', move, false);
 setPosition(x, y, direction);
