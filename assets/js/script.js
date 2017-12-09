@@ -10,8 +10,7 @@ var controls = {
     up: 'z',
     down: 's',
     left: 'q',
-    right: 'd',
-    space: 'spacebar'
+    right: 'd'
 }
 
 var rotation = {
@@ -32,7 +31,6 @@ var cibleValue = 0;
 function setPosition (posX, posY, dir) {
     gridX = x;
     gridY = y;
-    
     
     var grid = document.querySelector('.line-'+posY+' .col-'+posX);
     
