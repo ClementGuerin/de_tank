@@ -42,8 +42,3 @@ body{
     display: inline-block;
     
 }
-
-.line-3 > .col-12{
-    background: url(../img/tank_bg.png) no-repeat;
-    background-position: 0px 0px;
-}
