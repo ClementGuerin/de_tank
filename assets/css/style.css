@@ -281,3 +281,17 @@ body{
         transform: rotate(0deg) scale(1);
     }
 }
+
+.mute{
+    height: 64px;
+    width: 64px;
+    background: url(../img/mute.png) no-repeat;
+    background-position: 0px 0px;
+    position: absolute;
+    left: 15;
+    bottom: 15px;
+}
+
+.mute-off{
+    background-position: 0px -64px;
+}
