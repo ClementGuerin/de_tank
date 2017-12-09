@@ -47,3 +47,12 @@ body{
     background: url(../img/tank_bg.png) no-repeat;
     background-position: 0px 0px;
 }
+
+.line-3 > .col-13{
+    background: url(../img/bg_bullet.png) no-repeat;
+    background-position: 0px 0px;
+}
+
+.cible{
+    background: url(../img/bg_cible.png) no-repeat;
+}
