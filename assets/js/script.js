@@ -274,16 +274,19 @@ var volume = document.querySelector('.volume');
 
 var audio_musique = new Audio();
 audio_musique.src = 'assets/sounds/song.mp3';
-audio_tir.volume = 0.15;
+audio_musique.volume = 0.10;
 
 var audio_tir = new Audio();
 audio_tir.src = 'assets/sounds/laser.wav';
+audio_tir.volume = 0.15;
 
 var audio_gameover = new Audio();
 audio_gameover.src = 'assets/sounds/gameover.wav';
+audio_gameover.volume = 0.15;
 
 var audio_touche = new Audio();
 audio_touche.src = 'assets/sounds/touche.wav';
+audio_touche.volume = 0.15;
 
 replay.addEventListener('click', function(){
     startmenu.style.display = 'block';
